@@ -1,0 +1,208 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'founders';
+    src: url("./assets/test-founders-grotesk-semibold.woff2");
+}
+
+@font-face {
+    font-family: 'montreal';
+    src: url("./assets/PPNeueMontreal-Book.woff");
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    overflow: hidden; /* Prevents body scroll */
+}
+
+header {
+    width: 100%;
+    height: 150px; /* Adjust height as needed */
+    background-color: white;
+    position: relative; /* Enable absolute positioning inside */
+    display: flex;
+    align-items: center; /* Vertically center content */
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between; /* Distribute space between the links */
+    align-items: center;
+    flex-direction: row; /* Align items in a row */
+    width: 100%; /* Ensure it takes full width */
+    padding: 0 20px; /* Add padding for spacing */
+}
+
+.stoop-online {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10; /* Ensure it stays above the scrolling content */
+}
+
+.stoop-online img {
+    width: 550px; /* Adjust width of the logo */
+    height: auto;
+    padding: 10px 0; /* Equal padding on top and bottom */
+    margin-top: 10px;
+}
+
+.header-nav {
+    margin-left: auto;
+}
+
+.about-link {
+    font-size: 40px;
+    font-family: 'montreal';
+    text-decoration: none;
+    color: black;
+    padding: 10px; /* Add some padding around the text */
+    transition: color 0.3s, text-shadow 0.3s;
+    margin-right: 20px;
+}
+
+.issues-link {
+    font-size: 40px;
+    font-family: 'montreal';
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    transition: color 0.2s, text-shadow 0.2s;
+    margin-left: 20px;
+}
+
+.about-link:hover, .issues-link:hover {
+    font-size: 45px;
+    text-shadow:
+        -1px -1px 0 #000, /* Outline effect (black) */
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    color: white;
+    transition: color 0.2s, text-shadow 0.2s;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100%; /* Fill the entire width of the page */
+    height: calc(100vh - 100px); /* Fill height minus header */
+    position: relative;
+    z-index: 1; /* Lower z-index to stay below the logo */
+    overflow: hidden; /* Hide the overflow so the blur effect stays contained */
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px; /* Adjust height of the gradient */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    pointer-events: none;
+    z-index: 2; /* Above scrolling content */
+}
+
+.column {
+    flex: 1;
+    overflow: hidden;  
+    position: relative;
+    height: 100%; /* Make columns fill container height */
+    display: flex;
+    flex-direction: column; /* Stack images vertically */
+}
+
+.column img {
+    width: 100%; /* Make images responsive */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Prevent inline spacing issues */
+    margin: 0; /* Remove any margin */
+    padding: 0; /* Remove any padding */
+}
+
+.image-container {
+    border: 1px solid black; /* Black border around images */
+    margin: 0; /* No gaps between images */
+    height: 100%; /* Ensure the image containers fill the column height */
+    position: relative; /* Position relative for overlay positioning */
+}
+
+
+.image-container img {
+    width: 100%; /* Make images responsive */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.column img {
+    width: 100%; /* Make images responsive */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.overlay {
+    position: absolute; /* Position overlay absolutely */
+    top: 0; /* Fill from the top */
+    left: 0; /* Fill from the left */
+    width: 100%; /* Fill the entire width */
+    height: 100%; /* Fill the entire height */
+    color: white; /* Text color for overlay */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex; /* Use flexbox to stack texts vertically */
+    flex-direction: column; /* Stack items vertically */
+    justify-content: space-between; /* Distribute space between top and bottom texts */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s; /* Smooth transition */
+    font-family: 'montreal';
+    font-size: 40px; /* Adjust size as needed */
+    padding: 10px; /* Padding to keep texts away from edges */
+}
+
+.top-text {
+    text-align: center; /* Center text */
+}
+
+.bottom-text {
+    text-align: center; /* Center text */
+    font-size: 24px;
+}
+
+.overlay a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none; /* Remove underline from text */
+    color: inherit; /* Inherit color from overlay */
+}
+
+.image-container:hover .overlay {
+    opacity: 1; /* Show overlay on hover */
+}
+
+.text-box {
+    height: 300px; /* Height of the text box */
+    background-color: white; /* Background color for the text box */
+    margin: 0; /* No margins */
+    display: flex; /* Center text inside */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    font-family: 'founders'; /* Use custom font */
+    font-size: 24px; /* Font size */
+}
+
+.image-container:hover {
+    cursor: pointer;
+}
